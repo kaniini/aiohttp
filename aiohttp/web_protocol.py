@@ -515,9 +515,9 @@ class RequestHandler(asyncio.streams.FlowControlMixin, asyncio.Protocol):
 
         Returns HTTP response with specific status code. Logs additional
         information. It always closes current connection."""
-        self.log_exception("Error handling request", exc_info=exc)
-
         if status == 500:
+            self.log_exception("Error handling request", exc_info=exc)
+
             msg = "<h1>500 Internal Server Error</h1>"
             if self.debug:
                 try:
